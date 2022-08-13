@@ -49,22 +49,23 @@ export default class App extends Component {
     );
     return (
       <div
-        style={
-          {
-            // height: '100vh',
-            // display: 'flex',
-            // justifyContent: 'center',
-            // alignItems: 'center',
-            // fontSize: 40,
-            // color: '#010101',
-          }
-        }
+        style={{
+          // height: '100vh',
+          // display: 'flex',
+          // justifyContent: 'center',
+          // alignItems: 'center',
+          margin: '20px',
+          // fontSize: 40,
+          // color: '#010101',
+        }}
       >
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
-        <div>All contacts: {contacts.length}</div>
         <Filter onChange={this.filterContacts} />
-        <h2>Contacts</h2>
+        <h2 style={{ marginBottom: '0' }}>Contacts</h2>
+        <div style={{ color: 'blue', marginTop: '10px' }}>
+          All contacts: {contacts.length}
+        </div>
         <ContactList contacts={visibleContacts} onDelete={this.deleteContact} />
       </div>
     );
