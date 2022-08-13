@@ -17,9 +17,16 @@ export default class App extends Component {
 
   addContact = contact => {
     const { contacts } = this.state;
-    this.setState(prevState => ({
-      contacts: [{ ...contact, id: shortid.generate() }, ...prevState.contacts],
-    }));
+    if (contacts.find(({ name }) => name === contact.name)) {
+      alert(`${contact.name} is already in contacts`);
+    } else {
+      this.setState(prevState => ({
+        contacts: [
+          { ...contact, id: shortid.generate() },
+          ...prevState.contacts,
+        ],
+      }));
+    }
   };
 
   deleteContact = contactToDelete => {
@@ -53,8 +60,9 @@ export default class App extends Component {
           }
         }
       >
-        <h2>Phonebook</h2>
+        <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
+        <div>All contacts: {contacts.length}</div>
         <Filter onChange={this.filterContacts} />
         <h2>Contacts</h2>
         <ContactList contacts={visibleContacts} onDelete={this.deleteContact} />

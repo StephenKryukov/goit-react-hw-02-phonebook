@@ -1,6 +1,6 @@
 import { Component } from 'react';
 // import s from './ContactList/ContactList.module.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export default class ContactList extends Component {
   state = {
@@ -25,3 +25,14 @@ export default class ContactList extends Component {
     );
   }
 }
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
