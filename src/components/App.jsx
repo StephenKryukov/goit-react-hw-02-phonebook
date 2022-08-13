@@ -55,6 +55,7 @@ export default class App extends Component {
           // justifyContent: 'center',
           // alignItems: 'center',
           margin: '20px',
+          width: '700px',
           // fontSize: 40,
           // color: '#010101',
         }}
