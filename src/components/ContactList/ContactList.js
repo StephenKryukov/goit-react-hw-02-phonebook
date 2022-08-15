@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { ContactListItem } from './ContactListItem';
 import s from './ContactList.module.css';
 import PropTypes from 'prop-types';
 
@@ -12,18 +13,13 @@ export default class ContactList extends Component {
     return (
       <ul className={s.list}>
         {contacts.map(({ name, number, id }) => (
-          <li className={s.item} key={id}>
-            <p className={s.contact}>
-              {name}: {number}
-            </p>
-            <button
-              className={s.button}
-              type="button"
-              onClick={() => onDelete(id)}
-            >
-              Delete
-            </button>
-          </li>
+          <ContactListItem
+            key={id}
+            name={name}
+            number={number}
+            id={id}
+            deleteContact={onDelete}
+          />
         ))}
       </ul>
     );
